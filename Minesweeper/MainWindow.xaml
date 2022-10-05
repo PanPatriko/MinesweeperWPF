@@ -1,0 +1,48 @@
+﻿<Window x:Class="Minesweeper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Minesweeper"
+        mc:Ignorable="d"
+        Title="Minesweeper by PP" Icon="Icons\mine.ico" MinHeight="300" MinWidth="300" ResizeMode="NoResize" SizeToContent="WidthAndHeight">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_Settings">
+                    <MenuItem Header="_Difficult">
+                        <RadioButton x:Name="RadioBttnEasy" Click="MenuItem_Checked" Content="Easy" IsChecked="True"/>
+                        <RadioButton x:Name="RadioBttnMedium" Click="MenuItem_Checked" Content="Medium"/>
+                        <RadioButton x:Name="RadioBttnHard" Click="MenuItem_Checked" Content="Hard" />
+                        <RadioButton x:Name="RadioBttnCustom" Click="MenuItem_Checked" Content="Custom" IsEnabled="False"/>
+                    </MenuItem>
+                    <MenuItem x:Name="SoundMenuItem" Header="_Sound" IsCheckable="True" IsChecked="{Binding Path=Sound}"/>
+                    <MenuItem Header="_Scores"/>
+                    <Separator />
+                    <MenuItem Header="_Exit" Click="MenuItem_Click" />
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Reset" Height="50" Width="50" Click="Button_Start_Click" />
+            <Label Content="Time:" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+            <Label Content="{Binding Time}" HorizontalAlignment="Center" VerticalAlignment="Center" ></Label>
+        </WrapPanel>
+        <WrapPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Content="Board height:" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+            <Label Content="{Binding Height}" HorizontalAlignment="Center" VerticalAlignment="Center" ></Label>
+            <Label Content="Board width:" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+            <Label Content="{Binding Width}" HorizontalAlignment="Center" VerticalAlignment="Center" ></Label>
+            <Label Content="Mines:" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+            <Label Content="{Binding Mines}" HorizontalAlignment="Center" VerticalAlignment="Center" ></Label>
+            <Label Content="Flags:" HorizontalAlignment="Center" VerticalAlignment="Center" ></Label>
+            <Label Content="{Binding Flags}" HorizontalAlignment="Center" VerticalAlignment="Center" ></Label>
+        </WrapPanel>
+        <Grid Grid.Row="2" Name="GameGrid"/>
+    </Grid>
+</Window>
